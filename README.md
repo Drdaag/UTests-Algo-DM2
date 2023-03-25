@@ -1,6 +1,6 @@
 # Unit Tests
 
-Some unit tests for the first algorithmic assignment.
+Some unit tests for the second algorithmic assignment.
 
 ```
 Don't forget to change the file for the name of your .py file
