@@ -133,36 +133,67 @@ def __tostr(self):
 def print_tree(tree):
     print("".join(e + "\n" for e in __tostr(tree)[0]))
 
+B_Simple = B = BinTree(None, BinTree(
+    None, BinTree("t", None, None), BinTree(
+                "b", None, None)), BinTree(None, BinTree("a", None, None), BinTree(None, BinTree("c", None, None), BinTree("e", None, None))))
 
+B_medium = BinTree(None,
+             BinTree(None, 
+                     BinTree(None, 
+                             BinTree('m', None, None),
+                             BinTree(None,
+                                     BinTree(None, 
+                                             BinTree('s', None, None),
+                                             BinTree('i', None, None)
+                                             ),
+                                     BinTree('u', None, None)
+                                     )
+                            ),
+                     BinTree('a', None, None)
+                     ),
+             BinTree(None,
+                     BinTree(' ', None, None),
+                     BinTree(None,
+                             BinTree(None,
+                                     BinTree('n', None, None),
+                                     BinTree('f', None, None)
+                                     ),
+                             BinTree('h', None, None)
+                             )
+                    )
+            )   
 # ------------------------------------------------------------------------------------------
 # B = bintree.BinTree("1", bintree.BinTree("2", bintree.BinTree("3", None, None), None), bintree.BinTree("4", bintree.BinTree("5", None, None), None))
 # print(print__str__(B))    
             
             
-            
+        
 # build_frequency_list
+print("\n---------build_frequency_list---------")   
+print()  
 # simple
 res = [(4, 'a'), (4, 'b'), (2, 'c'), (1, 'e'), (5, 't')]
 val = mycode.build_frequency_list("bbaabtttaabtctce")
-check_scramble_lists("test_build_frequency_list_simple", res, val)
+check_scramble_lists("build_frequency_list_simple", res, val)
 
 # medium
 res = [(15, ' '), (12, 'a'), (4, 'f'), (9, 'h'), (2, 'i'), (4, 'm'), (4, 'n'), (1, 's'), (4, 'u')]
 val = mycode.build_frequency_list("um ah human huffman is fun i am a fan ha ha ha ha ha ha")
-check_scramble_lists("test_build_frequency_list_medium", res, val)
+check_scramble_lists("build_frequency_list_medium", res, val)
 
 
 # empty
 res = []
 val = mycode.build_frequency_list("")
-check_scramble_lists("test_build_frequency_list_empty", res, val)
+check_scramble_lists("build_frequency_list_empty", res, val)
 
 # complex
 res = [(74, 'f'), (1, 'h'), (54, 'k'), (40, 'j'), (4, 's'), (1, 'l'), (29, 'z'), (2, 'e'), (16, 'p'), (4, 'd')]
 val = mycode.build_frequency_list("fffhkkffjjfkfjfjfkkkkfkfjfkfsslskfjfkfszfjkfjkfkfkfjfkepjfepzfjjfkdkdjfdkdfjzpjfkfkfjzpkfkfjkzpfkzfjkfffjfkfkfkfjffjfzpzpzzkfjfjfkkzzkjfzkpfkjfkfjfjfjfjfjfkzpkzzppzkfjzpfjkffjfkzpkfjzkfkfkzjfkzkfjkzpfzkfzjfzkzpkjfzkfjpfjfkzfk")
-check_scramble_lists("test_build_frequency_list_complex", res, val)
+check_scramble_lists("build_frequency_list_complex", res, val)
 
 # build_Huffman_tree
+print("\n---------build_Huffman_tree---------")  
 print()
 print("-----------------------------------------------------")
 print("PLUSIEURS ARBRES SONT POSSIBLES POUR UNE MEME LISTE")
@@ -176,14 +207,13 @@ print()
 res = mycode.build_Huffman_tree([(4, 'a'), (4, 'b'), (2, 'c'), (1, 'e'), (5, 't')])
 # print(res)
 # haut_res = [('t', 2), ('a', 2), ('b', 2), ('c', 3), ('e', 3)]
-B = BinTree(None, BinTree
-                    (None, BinTree
-                     (None, BinTree("e", None, None), 
-                      BinTree("c", None, None)), BinTree("b", None, None)), 
-                    BinTree(None, BinTree("a", None, None), BinTree("t", None, None)))
+B = BinTree(None, BinTree(
+    None, BinTree("t", None, None), BinTree(
+                "b", None, None)), BinTree(None, BinTree("a", None, None), BinTree(None, BinTree("c", None, None), BinTree("e", None, None))))
+# B = BinTree(None, BinTree(None, BinTree(None, BinTree("e", None, None), BinTree("c", None, None)), BinTree("b", None, None)), BinTree(None, BinTree("a", None, None), BinTree("t", None, None)))
 haut = get_hauteur_feuilles(res)
 haut_res = get_hauteur_feuilles(B)
-test = check_scramble_lists("test_build_Huffman_tree_simple", haut, haut_res)
+test = check_scramble_lists("build_Huffman_tree_simple", haut, haut_res)
 if (not test):
     # print(haut)
     print("True :")
@@ -226,7 +256,7 @@ haut_res = [[('h', 3), ('f', 4), ('n', 4), (' ', 2), ('a', 2), ('u', 4), ('i', 5
             [('h', 3), ('m', 4), ('n', 4), (' ', 2), ('a', 2), ('u', 4), ('i', 5), ('s', 5), ('f', 3)], #f
             [('h', 3), ('m', 4), ('f', 4), (' ', 2), ('a', 2), ('u', 4), ('i', 5), ('s', 5), ('n', 3)], #n
             [('h', 3), ('m', 4), ('f', 4), (' ', 2), ('a', 2), ('n', 4), ('i', 5), ('s', 5), ('u', 3)]] #u
-test = mult_scamble_list("test_build_Huffman_tree_medium", haut, haut_res)
+test = mult_scamble_list("build_Huffman_tree_medium", haut, haut_res)
 if (not test):
     # print(haut)
     print("True :")
@@ -241,13 +271,118 @@ res = mycode.build_Huffman_tree([])
 B = None
 haut = get_hauteur_feuilles(res)
 haut_res = get_hauteur_feuilles(B)
-test = check_scramble_lists("test_build_Huffman_tree_empty", haut, haut_res)
+test = check_scramble_lists("build_Huffman_tree_empty", haut, haut_res)
 if (not test):
     # print(haut)
     print("True :")
     print("None")
     print("Got :")
     print(res)
+    
+print("\n---------encode_data---------")      
+    
+# encode_data
+print()
+# simple
+val = mycode.encode_data(B_Simple, "bbaabtttaabtctce")
+res = '01011010010000001010010011000110111'
+simple_check("encode_data_simple", res, val)
+ 
+    
+# Medium
+val = mycode.encode_data(B_medium, "um ah human huffman is fun i am a fan ha ha ha ha ha ha")
+res = '001100010011111011100110000111001011100111101110100001110010001010010010110100111100100010110010001001101101011100101110110111011011101101110110111011011101'
+simple_check("encode_data_medium", res, val)
+
+# Empty
+val = mycode.encode_data(B_medium, "")
+res = ""
+simple_check("encode_data_empty", res, val)   
+
+# Not Found
+try :
+    val = mycode.encode_data(B_medium, "ha ha fun Z")
+    print("encode_data_not_found : -----------NO")
+    print(f"True : Raise Exception\nGot  : {val}\n")
+except:
+     print("encode_data_not_found : [OK]")
+ 
+ 
+  
+    
+# decode_data
+print("\n---------decode_data---------")
+print() 
+
+# Simple
+val = mycode.decode_data(B_Simple, "01011010010000001010010011000110111")
+res = 'bbaabtttaabtctce'
+simple_check("decode_data_simple", res, val)
+
+# Medium
+val = mycode.decode_data(B_medium, "001100010011111011100110000111001011100111101110100001110010001010010010110100111100100010110010001001101101011100101110110111011011101101110110111011011101")
+res = 'um ah human huffman is fun i am a fan ha ha ha ha ha ha'
+simple_check("decode_data_medium", res, val)
+
+# Empty
+val = mycode.decode_data(B_medium, "")
+res = ""
+simple_check("decode_data_empty", res, val)   
+
+# Not Found
+try :
+    val = mycode.encode_data(B_medium, "001")
+    print("decode_data_not_found : -----------NO")
+    print(f"True : Raise Exception\nGot  : {val}\n")
+except:
+     print("decode_data_not_found : [OK]")
+
+
+# encode_tree
+print("\n---------encode_tree---------")
+print() 
+# Simple
+val = mycode.encode_tree(B_Simple)
+res = '0010111010010110001001011000010101100011101100101'
+simple_check("encode_tree_simple", res, val)
+
+# Medium
+val = mycode.encode_tree(B_medium)
+res = '00010110110100101110011101101001101110101101100001010010000000101101110101100110101101000'
+simple_check("encode_tree_medium", res, val)
+
+# Empty
+print(f"encode_tree_empty : [NOT PRECISED IN THE SUBJECT]\nGot : {mycode.encode_tree(BinTree(None, None, None))}")
+
+
+# decode_tree
+print("\n---------decode_tree---------")
+print("/!\\ DEPEND DE ENCODE, A CHECKER DANS LE DOUTE ! /!\\")
+print() 
+
+# Simple
+enc = "0010111010010110001001011000010101100011101100101"
+res = mycode.decode_tree(enc)
+val = mycode.encode_tree(res)
+test = simple_check("decode_tree_simple", enc, val)
+if (not test):
+    print("True :")
+    print_tree(B_Simple)
+    print("Got :")
+    print_tree(res)
+
+# Medium
+enc = "00010110110100101110011101101001101110101101100001010010000000101101110101100110101101000"
+res = mycode.decode_tree(enc)
+val = mycode.encode_tree(res)
+test = simple_check("decode_tree_medium", enc, val)
+if (not test):
+    print("True :")
+    print_tree(B_medium)
+    print("Got :")
+    print_tree(res)
+
+
 
 # RANDOM TESTS (may be unstable)
 print("\n+---------RANDOM TESTS---------+")
