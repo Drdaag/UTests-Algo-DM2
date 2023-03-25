@@ -383,6 +383,93 @@ if (not test):
     print_tree(res)
 
 
+# to_binary
+print("\n---------to_binary---------")
+print()
+
+# data_Simple
+encData = "01011010010000001010010011000110111"
+           
+res = mycode.to_binary(encData)
+tru = ('Z@¤Æ\x07', 5)
+simple_check("to_binary_data_simple", tru, res)
+
+
+# data_Medium
+encData = "001100010011111011100110000111001011100111101110100001110010001010010010110100111100100010110010001001101101011100101110110111011011101101110110111011011101"
+res = mycode.to_binary(encData)
+tru = ('1>æ\x1c¹î\x87"\x92ÓÈ²&×.Ý»ví\r', 4)
+simple_check("to_binary_data_medium", tru, res)
+
+# tree_Simple
+encTree = "0010111010010110001001011000010101100011101100101"
+res = mycode.to_binary(encTree)
+tru = ('.\x96%\x85c²\x01', 7)
+simple_check("to_binary_tree_simple", tru, res)
+
+# tree_Medium
+encTree = "00010110110100101110011101101001101110101101100001010010000000101101110101100110101101000"
+res = mycode.to_binary(encTree)
+tru = ('\x16ÒçiºØR\x02Ýf´\x00', 7)
+simple_check("to_binary_tree_medium", tru, res)
+
+# no_align
+encTree = "00010110"
+res = mycode.to_binary(encTree)
+tru = ('\x16', 0)
+simple_check("to_binary_tree_no_align", tru, res)
+
+# from_binary
+print("\n---------from_binary---------")
+print()
+
+# data_Simple
+tru = "01011010010000001010010011000110111"
+res = mycode.from_binary('Z@¤Æ\x07', 5)
+simple_check("from_binary_data_simple", tru, res)
+
+
+# data_Medium
+tru = "001100010011111011100110000111001011100111101110100001110010001010010010110100111100100010110010001001101101011100101110110111011011101101110110111011011101"
+res = mycode.from_binary('1>æ\x1c¹î\x87"\x92ÓÈ²&×.Ý»ví\r', 4)
+simple_check("from_binary_data_medium", tru, res)
+
+# tree_Simple
+tru = "01011010010000001010010011000110111"
+        
+res = mycode.from_binary('Z@¤Æ\x07', 5)
+simple_check("from_binary_tree_simple", tru, res)
+
+# tree_Medium
+tru = "00010110110100101110011101101001101110101101100001010010000000101101110101100110101101000"
+res = mycode.from_binary('\x16ÒçiºØR\x02Ýf´\x00', 7)
+simple_check("from_binary_tree_medium", tru, res)
+
+
+# compress/decompress
+print("\n---------compress/decompress---------")
+print()
+
+# Simple
+tru = "bbaabtttaabtctce"
+tmp = mycode.compress(tru)
+val = mycode.decompress(tmp[0][0], tmp[0][1], tmp[1][0], tmp[1][1])
+simple_check("FINAL_compress_simple", tru, val)
+
+# Medium
+tru = "um ah human huffman is fun i am a fan ha ha ha ha ha ha"
+tmp = mycode.compress(tru)
+val = mycode.decompress(tmp[0][0], tmp[0][1], tmp[1][0], tmp[1][1])
+simple_check("FINAL_compress_medium", tru, val)
+
+# Complex
+tru = "um ah human huffman is fun i am a fan ha ha ha ha ha ha MDR- Il est plus LONG ET EST COMPLEXE MDR"
+tmp = mycode.compress(tru)
+val = mycode.decompress(tmp[0][0], tmp[0][1], tmp[1][0], tmp[1][1])
+simple_check("FINAL_compress_complex", tru, val)
+
+
+
 
 # RANDOM TESTS (may be unstable)
 print("\n+---------RANDOM TESTS---------+")
